@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Link Coding Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>MS Link Coding Converter</h1>
+    <input type="text" id="inputText" placeholder="Enter text">
+    <button onclick="convertToMSLink()">Convert</button>
+    <p>Result: <span id="output"></span></p>
+
+    <script>
+        function convertToMSLink() {
+            const text = document.getElementById('inputText').value;
+            const result = [];
+            for (let char of text.toUpperCase()) {
+                if (/[A-Z]/.test(char)) {
+                    result.push(char.charCodeAt(0) - 'A'.charCodeAt(0) + 1);
+                } else {
+                    result.push(char); // Keep non-alphabetic characters as-is
+                }
+            }
+            document.getElementById('output').innerText = result.join(" ");
+        }
+    </script>
+</body>
+</html>
